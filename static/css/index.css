@@ -1,0 +1,10 @@
+.navbar img {
+    width: 2rem;
+}
+
+.welcome {
+    background: url('../IMGs/istockphoto-1189773955-612x612.jpg');
+    
+    background-position: center center;
+    background-size: cover;
+}
