@@ -1,10 +1,26 @@
+
 .navbar img {
     width: 2rem;
 }
-
-.welcome {
-    background: url('../IMGs/istockphoto-1189773955-612x612.jpg');
-    
-    background-position: center center;
+main{
+    background: url('../IMGs/fondo.jpg') no-repeat center center;
     background-size: cover;
+    align-content: center;
+    height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    color: white; /* Color del texto para asegurar que se lea sobre la imagen */
+}
+.card2{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #303030;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    width: 70%;
 }

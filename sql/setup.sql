@@ -12,13 +12,13 @@ CREATE TABLE users (
 );
 
 CREATE TABLE notes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    note_id INT NOT NULL,
-    phone_number VARCHAR(255),
-    adress VARCHAR(255),
-    FOREIGN KEY (note_id) REFERENCES users(id)
-);
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT,
+        title VARCHAR(255),
+        content TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
 CREATE TABLE content (
     id INT AUTO_INCREMENT PRIMARY KEY,
     content_id INT NOT NULL,
