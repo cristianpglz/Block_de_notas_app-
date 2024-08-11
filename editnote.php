@@ -16,7 +16,7 @@ if (!isset($_GET['id'])) {
 
 $noteId = $_GET['id'];
 
-// Obtener la nota específica del usuario
+// Get the user's specific note
 $note = $conn->prepare("
     SELECT * 
     FROM notes 
@@ -39,11 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $title = $_POST["title"];
         $content = $_POST["content"];
 
-        // Convertir el contenido en una lista, separando por líneas nuevas
+        // Convert the content into a list, separating with new lines
         $contentList = array_filter(array_map('trim', explode("\n", $content)));
         $contentJson = json_encode($contentList);
 
-        // Actualizar nota
+        // Update note
         $statement = $conn->prepare("
             UPDATE notes 
             SET title = :title, content = :content

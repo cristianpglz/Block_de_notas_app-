@@ -9,10 +9,10 @@ if (!isset($_SESSION["user"])) {
     exit;
 }
 
-// Obtener el ID de la nota desde la URL
+// Get note ID from URL
 $noteId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Obtener la nota específica
+// Get the specific note
 $note = $conn->prepare("
     SELECT * 
     FROM notes 
@@ -23,7 +23,7 @@ $note->execute([
     ':note_id' => $noteId
 ]);
 
-// Obtener la nota si existe
+// Get the note if it exists
 $note = $note->fetch(PDO::FETCH_ASSOC);
 if (!$note) {
     header("Location: home.php");

@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Please fill all the fields.";
     } else {
         $title = $_POST["title"];
-        $content = $_POST["content"]; // Mantener el contenido como texto plano
-        $createdAt = date('Y-m-d H:i:s'); // Capturamos la fecha y hora actuales
+        $content = $_POST["content"]; // Keep content as plain text
+        $createdAt = date('Y-m-d H:i:s'); // We capture the current date and time
 
-        // Insertar nota
+        // Insert note
         $statement = $conn->prepare("INSERT INTO notes (user_id, title, content, created_at) VALUES (:user_id, :title, :content, :created_at)");
         $statement->execute([
             ":user_id" => $_SESSION["user"]["id"],
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ":created_at" => $createdAt,
         ]);
 
-        // Responder con un mensaje de éxito (usado por JavaScript)
+        // Reply with a success message (used by JavaScript)
         echo json_encode(["success" => true]);
         exit;
     }
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <script>
 document.getElementById('submit-note').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevenir el envío predeterminado del formulario
+    event.preventDefault(); // Prevent default form submission
     
     var form = document.getElementById('note-form');
     var formData = new FormData(form);
@@ -92,13 +92,13 @@ document.getElementById('submit-note').addEventListener('click', function(event)
     })
     .then(data => {
         if (data.success) {
-            window.location.href = 'home.php'; // Redirigir a home.php si la nota se agregó correctamente
+            window.location.href = 'home.php'; // Redirect to home.php if note added successfully
         } else {
             alert('An error occurred while adding the note.');
         }
     })
     .catch(error => {
-        console.error('Error:', error); // Mostrar el error exacto en la consola
+        console.error('Error:', error); // Show exact error in console
         alert('An error occurred while sending the form.');
     });
 });

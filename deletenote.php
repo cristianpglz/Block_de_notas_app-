@@ -16,7 +16,7 @@ if (!isset($_GET['id'])) {
 
 $noteId = $_GET['id'];
 
-// Eliminar la nota específica del usuario
+// Delete user-specific note
 $statement = $conn->prepare("
     DELETE FROM notes 
     WHERE id = :id AND user_id = :user_id
